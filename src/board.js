@@ -9,14 +9,19 @@ const Board = ({rows, cols}) => {
     let numSquares = rows * cols;
     let squares = [];
     let player = playerX ? "Player X" : "Player 0"
-    
-    //whenever someone clicks, turn updates and will checks if someone wins (now just consolelogs)
+    let currentBoard = new Array(rows).fill().map( row => new Array(cols).fill(0))
+
+    //whenever someone clicks, turn updates and will check if someone wins (now just console logs)
     useEffect( () => {
         console.log('hi') //check wins
     }, [playerX])
 
-    function changePlayer() {
-        playerX ? setPlayer(false) : setPlayer(true)
+    function handleClick(key) { // mod rows?
+        if (playerX) {
+            setPlayer(false)
+        } else {
+            setPlayer(true)
+        }
     }
 
 
@@ -30,7 +35,7 @@ const Board = ({rows, cols}) => {
             {
                 squares.map( square => {
                     return (
-                        <div onClick={changePlayer}>{square}</div>
+                        <div onClick={() => handleClick(square.key)}>{square}</div>
                     )
                 })
             }
