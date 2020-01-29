@@ -12,6 +12,10 @@ const Game = () => {
         document.getElementById('board').style.setProperty('--rows', rows)
     }
 
+    function checkWin(board) {
+        
+    }
+
     return (
         <div>
             <label> How many rows?
@@ -20,7 +24,7 @@ const Game = () => {
             <label> How many cols?
                 <input type='number' value={cols} onChange={(e) => setCols(e.target.input)}></input>
             </label>
-            <Board rows={rows} cols={cols}/>
+            <Board rows={rows} cols={cols} checkWin={checkWin}/>
         </div>
     )
 }
