@@ -9,15 +9,16 @@ const Board = ({rows, cols}) => {
     let numSquares = rows * cols;
     let squares = [];
     let player = playerX ? "Player X" : "Player 0"
+    
+    //whenever someone clicks, turn updates and will checks if someone wins (now just consolelogs)
+    useEffect( () => {
+        console.log('hi') //check wins
+    }, [playerX])
 
     function changePlayer() {
         playerX ? setPlayer(false) : setPlayer(true)
     }
 
-    //whenever someone clicks, turn updates and checks if someone wins
-    useEffect( () => {
-        console.log('hi') //check wins
-    }, [playerX])
 
     for (let i = 0; i < numSquares; i++) {
         squares.push(<Square key={i} playerX={playerX}/>)
