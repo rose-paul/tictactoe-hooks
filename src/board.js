@@ -25,6 +25,7 @@ const Board = ({rows, cols}) => {
 
     return (
         <div id="board">
+            <div>
             {
                 squares.map( square => {
                     return (
@@ -32,6 +33,7 @@ const Board = ({rows, cols}) => {
                     )
                 })
             }
+            </div>
             <p>It's {player}'s turn!</p>
         </div>
     );
