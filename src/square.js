@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 
-const Square = () => {
+const Square = ({playerX}) => {
 
-    let [status, setStatus] = useState(0);
     let [display, setDisplay] = useState("")
 
     function selectSquare() {
-        setDisplay("X") //later set current user and status
+        playerX ? setDisplay("X") : setDisplay("O")
     }
 
     return (
-        <div className='square' onClick={selectSquare}>
+        <div className='square' onClick={selectSquare} >
             {display}
         </div>
     )
