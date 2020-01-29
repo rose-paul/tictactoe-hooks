@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Square = () => {
-    return (
-        <div className='square'>
 
+    let [status, setStatus] = useState(0);
+    let [display, setDisplay] = useState("")
+
+    function selectSquare() {
+        setDisplay("X") //later set current user and status
+    }
+
+    return (
+        <div className='square' onClick={selectSquare}>
+            {display}
         </div>
     )
 }

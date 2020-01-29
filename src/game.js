@@ -14,10 +14,10 @@ const Game = () => {
 
     return (
         <div>
-            <label>
+            <label> How many rows?
                 <input type='number' placeholder={rows} onChange={(e) => rowDimensions(e)}></input>
             </label>
-            <label>
+            <label> How many cols?
                 <input type='number' placeholder={cols} onChange={(e) => setCols(e.target.input)}></input>
             </label>
             <Board rows={rows} cols={cols}/>
