@@ -24,7 +24,7 @@ const Board = ({rows, cols}) => {
     }
 
     return (
-        <div id="board" onClick={changePlayer}>
+        <div id="board">
             {
                 squares.map( square => {
                     return (
