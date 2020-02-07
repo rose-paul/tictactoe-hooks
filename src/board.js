@@ -5,10 +5,10 @@ const Board = ({rows, cols, checkWin}) => {
 
     //determine whose turn it is
     let [playerX, setPlayer] = useState(true)
+    let [currentBoard, setBoard] = useState(new Array(rows).fill().map(row => new Array(cols).fill(0)))
 
     let squares = [];
     let player = playerX ? "Player X" : "Player 0"
-    let currentBoard = new Array(rows).fill().map( row => new Array(cols).fill(0))
 
     for (let i = 0; i < rows; i++) {
         let temp = [];
@@ -27,13 +27,17 @@ const Board = ({rows, cols, checkWin}) => {
 
         let [row, col] = pos;
         if (playerX) {
-            currentBoard[row][col] = 1
+            let newBoard = currentBoard;
+            newBoard[row][col] = 1;
+            setBoard(newBoard)
             setPlayer(false)
         } else {
-            currentBoard[row][col] = 2
+            let newBoard = currentBoard;
+            newBoard[row][col] = 2;
+            setBoard(newBoard)
             setPlayer(true)
         }
-
+        console.log(currentBoard)
         checkWin(currentBoard)
     }
 
