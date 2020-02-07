@@ -37,7 +37,7 @@ const Board = ({rows, cols, checkWin}) => {
             setBoard(newBoard)
             setPlayer(true)
         }
-        console.log(currentBoard)
+
         checkWin(currentBoard)
     }
 
