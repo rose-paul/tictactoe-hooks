@@ -6,7 +6,6 @@ const Board = ({rows, cols, checkWin}) => {
     //determine whose turn it is
     let [playerX, setPlayer] = useState(true)
     let [currentBoard, setBoard] = useState(new Array(rows).fill().map(row => new Array(cols).fill(0)))
-
     let squares = [];
     let player = playerX ? "Player X" : "Player 0"
 

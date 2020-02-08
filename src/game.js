@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Board from './board'
 
 const Game = () => {
@@ -7,14 +7,20 @@ const Game = () => {
     let [rows, setRows] = useState(3);
     let [cols, setCols] = useState(3);
 
+    //listen for changes in rows
+    useEffect(() => {
+
+    }, [rows]) 
+
     function rowDimensions(e) {
         setRows(e.target.value)
+        setCols(e.target.value)
         document.getElementById('board').style.setProperty('--rows', rows)
     }
 
     function checkWin(board) {
-        if (checkCols(board)) {
-            console.log('win')
+        if (checkDiags(board) || checkCols(board) || checkRows(board)) {
+            alert("Game over!")
         }
     }
 
@@ -48,13 +54,28 @@ const Game = () => {
 
     //WIN BY DIAG
     function checkDiags(board) {
-        topLeft = board[0][0];
-        topRight = board[0][board[0].length - 1]
-        height = board.length;
+        let height = board.length;
+        let width = board[0].length;
+        if (height !== width) return false;
+        let [leftRow, leftCol] = [0, 0]
+        let [rightRow, rightCol] = [0, width - 1]
+        let diag1 = [];
+        let diag2 = []
+        while (leftRow < height) {
+            diag1.push(board[leftRow][leftCol])
+            leftRow++
+            leftCol++
+            diag2.push(board[rightRow][rightCol])
+            rightRow++
+            rightCol--
+        }
 
-        
+        return checkStreak(diag1) || checkStreak(diag2)
+
+
     }
 
+    //HELPER FOR CHECK METHODS
     function checkStreak(streak) {
         if (streak[0] === 0) return false;
         let num = streak[0]
@@ -63,12 +84,10 @@ const Game = () => {
 
     return (
         <div>
-            <label> How many rows?
+            <h1>Tic Tac Toe - React Hooks</h1>
+            {/* <label> How many rows?
                 <input type='number' value={rows} onChange={(e) => rowDimensions(e)}></input>
-            </label>
-            <label> How many cols?
-                <input type='number' value={cols} onChange={(e) => setCols(e.target.input)}></input>
-            </label>
+            </label> */}
             <Board rows={rows} cols={cols} checkWin={checkWin}/>
         </div>
     )
