@@ -20,7 +20,10 @@ const Game = () => {
 
     function checkWin(board) {
         if (checkDiags(board) || checkCols(board) || checkRows(board)) {
-            alert("Game over!")
+            // fix bug that alerted before displaying final move render
+            setTimeout(() => {
+                alert("Game over!")
+            })
         }
     }
 
