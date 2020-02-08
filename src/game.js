@@ -23,7 +23,7 @@ const Game = () => {
             // fix bug that alerted before displaying final move render
             setTimeout(() => {
                 alert("Game over!")
-            })
+            }, 100)
         }
     }
 
